@@ -1,6 +1,5 @@
 # Анкета «Киножуй» — визуальная схема
-
-```mermaid
+maid
 %%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "Segoe UI"}}}%%
 flowchart TD
     classDef b1 fill:#E3F2FD,stroke:#1E88E5,color:#0D47A1,stroke-width:2px
@@ -9,7 +8,7 @@ flowchart TD
     classDef b4 fill:#F3E5F5,stroke:#6A1B9A,color:#4A148C,stroke-width:2px
     classDef b5 fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
     classDef b6 fill:#ECEFF1,stroke:#455A64,color:#263238,stroke-width:2px
-    classDef end fill:#CFD8DC,stroke:#37474F,color:#263238,font-weight:bold
+    classDef endNode fill:#CFD8DC,stroke:#37474F,color:#263238,font-weight:bold
 
     start((Старт)) --> B1Q1
 
@@ -70,5 +69,4 @@ flowchart TD
     B5Tol --> B6Q31
     B6Q31 --> EndFinal[[Конец анкеты]]
 
-    class EndEarly,EndFinal end
-```
+    class EndEarly,EndFinal endNode
