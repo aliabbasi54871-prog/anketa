@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анкета «Киножуй»</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-primary: #0b0c10;
+      --bg-card: rgba(11, 12, 16, 0.92);
+      --bg-field: #121318;
+      --bg-input: #0e0f14;
+      --border: #202430;
+      --text-main: #f1f5ff;
+      --text-body: #c0c7d4;
+      --text-note: #9ea7b8;
+      --accent: #7bc9ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text-main);
+      background: var(--bg-primary);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("bg.png") top left / 512px 512px repeat;
+      opacity: 0.95;
+      z-index: -1;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+      backdrop-filter: saturate(120%) blur(6px);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 32px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 24px;
+    }
+
+    h3 {
+      margin: 24px 0 12px;
+      font-size: 19px;
+      color: var(--text-body);
+      text-transform: none;
+    }
+
+    p {
+      margin: 0 0 18px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .note {
+      color: var(--text-note);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .hr {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    fieldset.q {
+      border: none;
+      margin: 0 0 18px;
+      padding: 18px 22px;
+      border-radius: 12px;
+      background: var(--bg-field);
+    }
+
+    .q-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 8px 0;
+      padding: 10px 12px;
+      color: #d5dae4;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, border 0.15s ease;
+    }
+
+    label:hover {
+      background: rgba(123, 201, 255, 0.08);
+      border: 1px solid rgba(123, 201, 255, 0.35);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text-main);
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .scale {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .scale label {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .scale label input[type="radio"] {
+      margin: 0;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+      accent-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    button {
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 0;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent);
+      color: #062031;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #8fdaff;
+    }
+
+    .btn.alt {
+      background: #1c2230;
+      color: #d5dae4;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 16px;
+      }
+
+      .wrap {
+        padding: 24px 16px 36px;
+      }
+
+      .card {
+        padding: 26px 18px;
+        border-radius: 14px;
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin: 26px 0 10px;
+      }
+
+      fieldset.q {
+        padding: 16px 16px;
+        margin-bottom: 14px;
+      }
+
+      .scale label {
+        width: 48px;
+        height: 48px;
+      }
+
+      label {
+        padding: 12px 10px;
+        font-size: 16px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        font-size: 16px;
+        padding: 12px 14px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      button {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1 id="H"></h1>
+      <p id="INTRO"></p>
+      <div class="hr"></div>
+      <div id="app"></div>
+      <div class="actions">
+        <button id="send"></button>
+        <button id="reset" class="btn alt"></button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const STR = {
+      H: "АНКЕТА",
+      INTRO: "Мы хотим, чтобы «Киножуй» стал местом, куда всегда хочется возвращаться.\n\nПоделитесь своим мнением — это анонимно и займет не более 5 минут.\n\nСпасибо, что вы с нами 💛",
+      SEND: "Отправить (демо)",
+      RESET: "Сбросить",
+
+      B1_TITLE: "Блок 1. Общие данные",
+      B1_NOTE: "Пожалуйста, укажите основную информацию о себе.",
+      Q1: "1. Укажите ваш пол",
+      Q1_OPTIONS: [
+        { label: "Мужской", value: "male" },
+        { label: "Женский", value: "female" }
+      ],
+      Q2: "2. Укажите ваш возраст",
+      Q2_OPTIONS: [
+        { label: "меньше 18-ти", value: "under18" },
+        { label: "18-25 лет", value: "18_25" },
+        { label: "26-35 лет", value: "26_35" },
+        { label: "35-45 лет", value: "35_45" },
+        { label: "45-60 лет", value: "45_60" },
+        { label: "60+", value: "60_plus" }
+      ],
+      Q3: "3. Смотрели ли вы фильмы на платформе «Киножуй» за последний месяц?",
+      Q3_OPTIONS: [
+        { label: "Да", value: "yes" },
+        { label: "Нет (если «Нет» – завершить опрос)", value: "no" }
+      ],
+
+      B2_TITLE: "Блок 2. Стабильность интернет-соединения",
+      B2_NOTE: "Пожалуйста, ответьте на вопросы о стабильности вашего интернет-соединения.",
+      Q4: "4. Какой последний фильм вы начали смотреть на «Киножуе»? (укажите название фильма)",
+      Q4_PH: "Название фильма",
+      Q5: "5. Досмотрели ли вы этот фильм до конца?",
+      Q5_OPTIONS: [
+        { label: "Да", value: "yes" },
+        { label: "Нет", value: "no" }
+      ],
+      Q6: "6. Были ли зависания или прерывания видео в процессе просмотра?",
+      Q6_OPTIONS: [
+        { label: "Ни разу", value: "0" },
+        { label: "1 раз", value: "1" },
+        { label: "2-3 раза", value: "2" },
+        { label: "4 раза и более", value: "3" }
+      ],
+      Q7: "7. Оцените стабильность вашего интернет-соединения",
+      Q7_OPTIONS: [
+        { label: "низкое", value: "low" },
+        { label: "среднее", value: "medium" },
+        { label: "высокое", value: "high" }
+      ],
+
+      B3_TITLE: "Блок 3. Влияние рекламы на общие впечатления от просмотра фильма",
+      B3_NOTE: "Пожалуйста, расскажите о влиянии рекламы на общие впечатления от просмотра фильма.",
+      Q8: "8. Демонстрировалась ли реклама во время просмотра этого фильма?",
+      Q8_OPTIONS: [
+        { label: "Да", value: "yes" },
+        { label: "Нет", value: "no" },
+        { label: "Не помню", value: "na" }
+      ],
+      Q9: "9. Насколько реклама раздражала вас во время просмотра? (отметьте наиболее близкое значение, где 1 – совсем не раздражала, а 5 – очень раздражала)",
+      Q10: "10. Из-за рекламы вы (выберите один вариант ответа):",
+      Q10_OPTIONS: [
+        { label: "Прервали просмотр", value: "stopped" },
+        { label: "Смотрели, но с раздражением", value: "irritated" },
+        { label: "Почти не обратили внимания", value: "ignored" },
+        { label: "Другое:", value: "other", extraInput: { name: "adsImpactOther", placeholder: "Укажите" } }
+      ],
+
+      B4_TITLE: "Блок 4. Наличие подписки на конкурентов",
+      B4_NOTE: "Пожалуйста, расскажите о наличии подписки на конкурентов (другие онлайн-кинотеатры).",
+      Q11: "11. Есть ли у вас платная подписка на другие онлайн-кинотеатры?",
+      Q11_OPTIONS: [
+        { label: "Да", value: "yes" },
+        { label: "Нет", value: "no" }
+      ],
+      Q12: "12. Если да, то на какие сервисы?",
+      Q12_OPTIONS: [
+        { label: "Фильмбокс", value: "filmbox" },
+        { label: "Иви", value: "ivi" },
+        { label: "Кинопоиск", value: "kinopoisk" },
+        { label: "Netflix", value: "netflix" }
+      ],
+      Q12_OTHER_LABEL: "Другое (укажите)",
+      Q13: "13. Какие преимущества данных сервисов вы видите",
+      Q13_PH: "Укажите преимущества сервисов",
+      Q14: "14. Как часто вы смотрите фильмы на Киножуе по сравнению с другими сервисами? (выберите один вариант ответа)",
+      Q14_OPTIONS: [
+        { label: "Почти всегда выбираю Киножуй", value: "mostly_kinozuy" },
+        { label: "Примерно поровну", value: "equal" },
+        { label: "Чаще на других сервисах", value: "other_services" },
+        { label: "Трудно сказать", value: "hard_to_say" }
+      ],
+
+      B5_TITLE: "Блок 5. Отношение зрителей к сценам антисоциального поведения в кино",
+      B5_NOTE: "Опрос поможет нам подобрать фильмы под ваши предпочтения. Пожалуйста, определите своё отношение к утверждениям ниже, где 1 – совсем не согласен, 5 – полностью согласен (отметьте наиболее близкий вам вариант).",
+      B5_INTOL_TITLE: "Нетерпимость по отношению к сценам антисоциального поведения в кино",
+      B5_INTOL_STATEMENTS: [
+        "15. Если персонаж унижает других ради собственной выгоды, мой интерес к фильму падает",
+        "16. Манипуляции и психологическое давление со стороны героя вызывают у меня отторжение к фильму",
+        "17. Когда герой разрушает важные для других отношения, мне становится неприятно смотреть фильм",
+        "18. Демонстрация бессмысленной жестокости снижает желание продолжать просмотр фильма",
+        "19. Мне неприятно смотреть сцены, где кто-то эксплуатирует доверие других",
+        "20. Если персонаж использует друзей/родных как инструмент достижения своих целей, фильм начинает меня раздражать",
+        "21. Когда в фильме никто не несёт ответственность за причинённый другим персонажам вред, я теряю интерес к кино",
+        "22. Сцены социальной несправедливости (унижение слабых, злоупотребление властью) портят впечатление от просмотра"
+      ],
+      B5_TOL_TITLE: "Толерантное отношение к сценам антисоциального поведения в кино",
+      B5_TOL_STATEMENTS: [
+        "23. Если герой нарушает социальные нормы ради своей цели, я могу поддержать его позицию",
+        "24. Меня не беспокоит, когда персонаж использует других, – главное, чтобы сюжет был интересным",
+        "25. Сцены жесткости добавляют экспрессию и экшн – это может быть частью хорошего кино",
+        "26. Если персонаж обходит систему, я отношусь к этому с симпатией",
+        "27. Мне нравятся сильные герои, которые ставят свои цели выше чужих чувств",
+        "28. Хаотичное и рискованное поведение героев делает фильм более живым",
+        "29. Даже негативные персонажи могут быть привлекательными, если они харизматичны",
+        "30. Когда персонажи действуют эгоистично, это выглядит честно"
+      ],
+
+      B6_TITLE: "Блок 6. Результаты анкеты",
+      B6_NOTE: "Спасибо за участие! Ваши ответы помогут нам сделать «Киножуй» лучше!",
+      R_Q: "Хотите получить результаты анкеты?",
+      R_OPT_Y: "Да, хочу – узнайте результат прямо сейчас или укажите e-mail (необязательно):",
+      R_EMAIL_PH: "Укажите e-mail (необязательно)",
+      R_OPT_N: "Нет, просто завершу опрос",
+      THANKS: "Спасибо! Это демо: отправка отключена."
+    };
+
+    function el(tag, props = {}, ...children) {
+      const element = document.createElement(tag);
+      Object.assign(element, props);
+      children.flat().forEach(child => {
+        if (child == null) return;
+        if (typeof child === "string") {
+          element.appendChild(document.createTextNode(child));
+        } else {
+          element.appendChild(child);
+        }
+      });
+      return element;
+    }
+
+    function createFieldset(title) {
+      const fs = el("fieldset", { className: "q" });
+      fs.appendChild(el("div", { className: "q-title" }, title));
+      return fs;
+    }
+
+    function radioGroup(name, options) {
+      return options.map(option => {
+        const label = el("label");
+        label.appendChild(el("input", { type: "radio", name, value: option.value }));
+        label.append(" " + option.label);
+        if (option.extraInput) {
+          label.append(" ");
+          label.appendChild(
+            el("input", {
+              type: "text",
+              name: option.extraInput.name,
+              placeholder: option.extraInput.placeholder
+            })
+          );
+        }
+        return label;
+      });
+    }
+
+    function checkboxGroup(name, options) {
+      return options.map(option => {
+        const label = el("label");
+        label.appendChild(el("input", { type: "checkbox", name, value: option.value }));
+        label.append(" " + option.label);
+        return label;
+      });
+    }
+
+    function scale(name) {
+      const group = el("div", { className: "scale" });
+      for (let i = 1; i <= 5; i += 1) {
+        const label = el("label");
+        label.appendChild(el("input", { type: "radio", name, value: String(i) }));
+        label.append(" " + i);
+        group.appendChild(label);
+      }
+      return group;
+    }
+
+    function render() {
+      document.getElementById("H").textContent = STR.H;
+      document.getElementById("INTRO").textContent = STR.INTRO;
+      document.getElementById("send").textContent = STR.SEND;
+      document.getElementById("reset").textContent = STR.RESET;
+
+      const app = document.getElementById("app");
+      app.innerHTML = "";
+
+      app.appendChild(el("h2", {}, STR.B1_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B1_NOTE));
+
+      let fs = createFieldset(STR.Q1);
+      radioGroup("gender", STR.Q1_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q2);
+      radioGroup("age", STR.Q2_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q3);
+      radioGroup("seenLastMonth", STR.Q3_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      app.appendChild(el("div", { className: "hr" }));
+
+      app.appendChild(el("h2", {}, STR.B2_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B2_NOTE));
+
+      let q = createFieldset(STR.Q4);
+      q.appendChild(el("input", { type: "text", name: "lastMovie", placeholder: STR.Q4_PH }));
+      app.appendChild(q);
+
+      fs = createFieldset(STR.Q5);
+      radioGroup("finished", STR.Q5_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q6);
+      radioGroup("lags", STR.Q6_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q7);
+      radioGroup("stability", STR.Q7_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      app.appendChild(el("div", { className: "hr" }));
+
+      app.appendChild(el("h2", {}, STR.B3_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B3_NOTE));
+
+      fs = createFieldset(STR.Q8);
+      radioGroup("ads", STR.Q8_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q9);
+      fs.appendChild(scale("adsAnnoy"));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q10);
+      radioGroup("adsImpact", STR.Q10_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      app.appendChild(el("div", { className: "hr" }));
+
+      app.appendChild(el("h2", {}, STR.B4_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B4_NOTE));
+
+      fs = createFieldset(STR.Q11);
+      radioGroup("otherSubs", STR.Q11_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      fs = createFieldset(STR.Q12);
+      checkboxGroup("svc", STR.Q12_OPTIONS).forEach(node => fs.appendChild(node));
+      const otherLabel = el("label");
+      otherLabel.append(STR.Q12_OTHER_LABEL);
+      otherLabel.appendChild(
+        el("input", { type: "text", name: "svcOther", placeholder: "Укажите" })
+      );
+      fs.appendChild(otherLabel);
+      app.appendChild(fs);
+
+      q = createFieldset(STR.Q13);
+      q.appendChild(el("textarea", { name: "svcBenefits", placeholder: STR.Q13_PH }));
+      app.appendChild(q);
+
+      fs = createFieldset(STR.Q14);
+      radioGroup("freq", STR.Q14_OPTIONS).forEach(node => fs.appendChild(node));
+      app.appendChild(fs);
+
+      app.appendChild(el("div", { className: "hr" }));
+
+      app.appendChild(el("h2", {}, STR.B5_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B5_NOTE));
+      app.appendChild(el("h3", {}, STR.B5_INTOL_TITLE));
+      STR.B5_INTOL_STATEMENTS.forEach((statement, idx) => {
+        const field = createFieldset(statement);
+        field.appendChild(scale("v_intol_" + (idx + 15)));
+        app.appendChild(field);
+      });
+
+      app.appendChild(el("h3", {}, STR.B5_TOL_TITLE));
+      STR.B5_TOL_STATEMENTS.forEach((statement, idx) => {
+        const field = createFieldset(statement);
+        field.appendChild(scale("v_tol_" + (idx + 23)));
+        app.appendChild(field);
+      });
+
+      app.appendChild(el("div", { className: "hr" }));
+
+      app.appendChild(el("h2", {}, STR.B6_TITLE));
+      app.appendChild(el("p", { className: "note" }, STR.B6_NOTE));
+
+      fs = createFieldset(STR.R_Q);
+      const yesLabel = el("label");
+      yesLabel.appendChild(el("input", { type: "radio", name: "getResults", value: "yes" }));
+      yesLabel.append(" " + STR.R_OPT_Y);
+      fs.appendChild(yesLabel);
+      fs.appendChild(
+        el("div", {}, el("input", { type: "email", name: "email", placeholder: STR.R_EMAIL_PH }))
+      );
+      const noLabel = el("label");
+      noLabel.appendChild(el("input", { type: "radio", name: "getResults", value: "no" }));
+      noLabel.append(" " + STR.R_OPT_N);
+      fs.appendChild(noLabel);
+      app.appendChild(fs);
+
+      document.getElementById("send").onclick = () => alert(STR.THANKS);
+      document.getElementById("reset").onclick = () => window.location.reload();
+    }
+
+    render();
+  </script>
+</body>
+</html>
+
