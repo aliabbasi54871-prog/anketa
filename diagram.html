@@ -2,61 +2,64 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #10131a;
-      color: #f1f5ff;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      background: #0a0f1a;
+      color: #f1f5ff;
+      font-family: "Segoe UI", sans-serif;
     }
-    header {
-      padding: 20px 24px;
-      background: #151b24;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    header, footer {
+      background: #121725;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      margin-top: auto;
+      color: #9ea7b8;
+      font-size: 14px;
     }
     main {
       flex: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 18px 24px 24px;
     }
     .canvas-wrapper {
       position: relative;
-      flex: 1;
-      min-height: 500px;
-      border-radius: 16px;
-      background: #0b0f16;
-      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.05);
+      height: min(1200px, 80vh);
+      min-height: 600px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(123,201,255,0.18), rgba(5,10,18,0.95));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.55);
       overflow: hidden;
     }
     .mermaid {
       width: 100%;
       height: 100%;
     }
-    footer {
-      padding: 12px 24px;
-      background: #151b24;
-      font-size: 14px;
-      color: #9ea7b8;
+    .hint {
+      margin: 0;
+      font-size: 15px;
+      color: #c0cada;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»</h1>
-    <p>РџРµСЂРµС‚Р°СЃРєРёРІР°Р№С‚Рµ СЃС…РµРјСѓ РјС‹С€СЊСЋ, РјР°СЃС€С‚Р°Р±РёСЂР№С‚Рµ РєРѕР»РµСЃРёРєРѕРј. РљРЅРѕРїРєРё СѓРїСЂР°РІР»РµРЅРёСЏ СЃРїСЂР°РІР° РїРѕРјРѕРіР°СЋС‚ С†РµРЅС‚СЂРёСЂРѕРІР°С‚СЊ Рё РїРѕРґРіРѕРЅСЏС‚СЊ РІРёРґ.</p>
+    <p class="hint">РџРµСЂРµРјРµС‰Р°Р№С‚Рµ СЃС…РµРјСѓ, СѓРґРµСЂР¶РёРІР°СЏ Р»РµРІСѓСЋ РєРЅРѕРїРєСѓ РјС‹С€Рё, РєРѕР»РµСЃРёРєРѕ РѕС‚РІРµС‡Р°РµС‚ Р·Р° РјР°СЃС€С‚Р°Р±.</p>
   </header>
   <main>
     <div class="canvas-wrapper">
       <div class="mermaid">
-%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "Segoe UI", "primaryColor": "#1a2230"}, "flowchart": {"htmlLabels": true}, "securityLevel": "loose"}}%%
+%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "Segoe UI", "primaryColor": "#1f2838"}, "securityLevel": "loose", "flowchart": {"htmlLabels": true, "curve": "basis"}}}%%
 flowchart TD
     classDef b1 fill:#E3F2FD,stroke:#1E88E5,color:#0D47A1,stroke-width:2px
     classDef b2 fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
@@ -66,71 +69,27 @@ flowchart TD
     classDef b6 fill:#ECEFF1,stroke:#455A64,color:#263238,stroke-width:2px
     classDef endNode fill:#CFD8DC,stroke:#37474F,color:#263238,font-weight:bold
 
-    start((РЎС‚Р°СЂС‚)) --> B1Q1
+    start((РЎС‚Р°СЂС‚))
+    B1["Р‘Р»РѕРє 1. РћР±С‰РёРµ РґР°РЅРЅС‹Рµ<br/>(1) РџРѕР» вЂ” РјСѓР¶СЃРєРѕР№ / Р¶РµРЅСЃРєРёР№<br/>(2) Р’РѕР·СЂР°СЃС‚ вЂ” РґРѕ 18, 18вЂ“25, 26вЂ“35, 35вЂ“45, 45вЂ“60, 60+<br/>(3) РЎРјРѕС‚СЂРµР»Рё РљРёРЅРѕР¶СѓР№ РІ РїСЂРѕС€Р»РѕРј РјРµСЃСЏС†Рµ?"]:::b1
+    B2["Р‘Р»РѕРє 2. РЎС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ РёРЅС‚РµСЂРЅРµС‚Р°<br/>(4) РџРѕСЃР»РµРґРЅРёР№ С„РёР»СЊРј (С‚РµРєСЃС‚)<br/>(5) Р”РѕСЃРјРѕС‚СЂРµР»Рё? вЂ” Р”Р° / РќРµС‚<br/>(6) Р—Р°РІРёСЃР°РЅРёСЏ вЂ” 0 / 1 / 2вЂ“3 / 4+<br/>(7) РЎС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ вЂ” РЅРёР·РєР°СЏ / СЃСЂРµРґРЅСЏСЏ / РІС‹СЃРѕРєР°СЏ"]:::b2
+    B3["Р‘Р»РѕРє 3. Р’Р»РёСЏРЅРёРµ СЂРµРєР»Р°РјС‹<br/>(8) Р РµРєР»Р°РјР° Р±С‹Р»Р°? вЂ” Р”Р° / РќРµС‚ / РќРµ РїРѕРјРЅСЋ<br/>(9) РќР°СЃРєРѕР»СЊРєРѕ СЂР°Р·РґСЂР°Р¶Р°Р»Р° вЂ” С€РєР°Р»Р° 1вЂ“5<br/>(10) РљР°Рє РїРѕРІР»РёСЏР»Р° вЂ” РїСЂРµСЂРІР°Р» РїСЂРѕСЃРјРѕС‚СЂ / СЂР°Р·РґСЂР°Р¶Р°Р»Рѕ / РЅРµ Р·Р°РјРµС‚РёР» / РґСЂСѓРіРѕРµ"]:::b3
+    B4["Р‘Р»РѕРє 4. РџРѕРґРїРёСЃРєРё РЅР° РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ<br/>(11) Р•СЃС‚СЊ РїРѕРґРїРёСЃРєРё? вЂ” Р”Р° / РќРµС‚<br/>(12) РљР°РєРёРµ СЃРµСЂРІРёСЃС‹ вЂ” Р¤РёР»СЊРјР±РѕРєСЃ / РРІРё / РљРёРЅРѕРїРѕРёСЃРє / Netflix / РґСЂСѓРіРѕРµ<br/>(13) РџСЂРµРёРјСѓС‰РµСЃС‚РІР° РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ (С‚РµРєСЃС‚)<br/>(14) РљР°Рє С‡Р°СЃС‚Рѕ РІС‹Р±РёСЂР°РµС‚Рµ вЂ” С‡Р°С‰Рµ / РїРѕСЂРѕРІРЅСѓ / СЂРµР¶Рµ / С‚СЂСѓРґРЅРѕ СЃРєР°Р·Р°С‚СЊ"]:::b4
+    B5["Р‘Р»РѕРє 5. РћС‚РЅРѕС€РµРЅРёРµ Рє Р°РЅС‚РёСЃРѕС†РёР°Р»СЊРЅРѕРјСѓ РїРѕРІРµРґРµРЅРёСЋ<br/>(15вЂ“22) РќРµС‚РµСЂРїРёРјРѕСЃС‚СЊ вЂ” 8 СѓС‚РІРµСЂР¶РґРµРЅРёР№, С€РєР°Р»Р° 1вЂ“5<br/>(23вЂ“30) РўРѕР»РµСЂР°РЅС‚РЅРѕСЃС‚СЊ вЂ” 8 СѓС‚РІРµСЂР¶РґРµРЅРёР№, С€РєР°Р»Р° 1вЂ“5"]:::b5
+    B6["Р‘Р»РѕРє 6. Р—Р°РІРµСЂС€РµРЅРёРµ<br/>(31) РџРѕР»СѓС‡РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹? вЂ” Р”Р° (e-mail) / РќРµС‚"]:::b6
+    EndEarly[[Р—Р°РІРµСЂС€РµРЅРёРµ Р°РЅРєРµС‚С‹]]:::endNode
+    EndFinal[[РљРѕРЅРµС† РѕРїСЂРѕСЃР°]]:::endNode
 
-    subgraph B1["Р‘Р»РѕРє 1. РћР±С‰РёРµ РґР°РЅРЅС‹Рµ"]
-        direction TB
-        B1Q1["(1) РџРѕР» вЂ” РјСѓР¶СЃРєРѕР№ / Р¶РµРЅСЃРєРёР№"]
-        B1Q2["(2) Р’РѕР·СЂР°СЃС‚ вЂ” РґРѕ 18, 18вЂ“25, 26вЂ“35, 35вЂ“45, 45вЂ“60, 60+"]
-        B1Q3{"(3) РЎРјРѕС‚СЂРµР»Рё РљРёРЅРѕР¶СѓР№ РІ РїСЂРѕС€Р»РѕРј РјРµСЃСЏС†Рµ?"}
-    end
-    class B1 b1
+    class start endNode
 
-    B1Q1 --> B1Q2 --> B1Q3
-    B1Q3 -->|Р”Р°| B2Q4
-    B1Q3 -->|РќРµС‚| EndEarly[[Р—Р°РІРµСЂС€РµРЅРёРµ Р°РЅРєРµС‚С‹]]
-
-    subgraph B2["Р‘Р»РѕРє 2. РЎС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ РёРЅС‚РµСЂРЅРµС‚Р°"]
-        direction TB
-        B2Q4["(4) РџРѕСЃР»РµРґРЅРёР№ РїСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹Р№ С„РёР»СЊРј (С‚РµРєСЃС‚)"]
-        B2Q5["(5) Р”РѕСЃРјРѕС‚СЂРµР»Рё РґРѕ РєРѕРЅС†Р°? вЂ” Р”Р° / РќРµС‚"]
-        B2Q6["(6) Р‘С‹Р»Рё Р·Р°РІРёСЃР°РЅРёСЏ вЂ” 0 / 1 / 2вЂ“3 / 4+"]
-        B2Q7["(7) РћС†РµРЅРёС‚Рµ СЃС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ вЂ” РЅРёР·РєР°СЏ / СЃСЂРµРґРЅСЏСЏ / РІС‹СЃРѕРєР°СЏ"]
-    end
-    class B2 b2
-
-    subgraph B3["Р‘Р»РѕРє 3. Р’Р»РёСЏРЅРёРµ СЂРµРєР»Р°РјС‹"]
-        direction TB
-        B3Q8["(8) Р РµРєР»Р°РјР° Р±С‹Р»Р°? вЂ” Р”Р° / РќРµС‚ / РќРµ РїРѕРјРЅСЋ"]
-        B3Q9["(9) РќР°СЃРєРѕР»СЊРєРѕ СЂР°Р·РґСЂР°Р¶Р°Р»Р° вЂ” С€РєР°Р»Р° 1вЂ“5"]
-        B3Q10["(10) РљР°Рє РїРѕРІР»РёСЏР»Р° СЂРµРєР»Р°РјР° вЂ” РїСЂРµСЂРІР°Р» РїСЂРѕСЃРјРѕС‚СЂ / СЂР°Р·РґСЂР°Р¶Р°Р»Рѕ / РЅРµ Р·Р°РјРµС‚РёР» / РґСЂСѓРіРѕРµ"]
-    end
-    class B3 b3
-
-    subgraph B4["Р‘Р»РѕРє 4. РџРѕРґРїРёСЃРєРё РЅР° РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ"]
-        direction TB
-        B4Q11["(11) Р•СЃС‚СЊ РїР»Р°С‚РЅС‹Рµ РїРѕРґРїРёСЃРєРё Сѓ РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ? вЂ” Р”Р° / РќРµС‚"]
-        B4Q12["(12) РљР°РєРёРµ СЃРµСЂРІРёСЃС‹ вЂ” Р¤РёР»СЊРјР±РѕРєСЃ / РРІРё / РљРёРЅРѕРїРѕРёСЃРє / Netflix / РґСЂСѓРіРѕРµ"]
-        B4Q13["(13) РџСЂРµРёРјСѓС‰РµСЃС‚РІР° РєРѕРЅРєСѓСЂРµРЅС‚РѕРІ (С‚РµРєСЃС‚)"]
-        B4Q14["(14) РљР°Рє С‡Р°СЃС‚Рѕ РІС‹Р±РёСЂР°РµС‚Рµ РљРёРЅРѕР¶СѓР№ вЂ” С‡Р°С‰Рµ / РїРѕСЂРѕРІРЅСѓ / СЂРµР¶Рµ / С‚СЂСѓРґРЅРѕ СЃРєР°Р·Р°С‚СЊ"]
-    end
-    class B4 b4
-
-    subgraph B5["Р‘Р»РѕРє 5. РћС‚РЅРѕС€РµРЅРёРµ Рє Р°РЅС‚РёСЃРѕС†РёР°Р»СЊРЅРѕРјСѓ РїРѕРІРµРґРµРЅРёСЋ"]
-        direction TB
-        B5Int["(15вЂ“22) РќРµС‚РµСЂРїРёРјРѕСЃС‚СЊ вЂ” 8 СѓС‚РІРµСЂР¶РґРµРЅРёР№, С€РєР°Р»Р° 1вЂ“5"]
-        B5Tol["(23вЂ“30) РўРѕР»РµСЂР°РЅС‚РЅРѕСЃС‚СЊ вЂ” 8 СѓС‚РІРµСЂР¶РґРµРЅРёР№, С€РєР°Р»Р° 1вЂ“5"]
-    end
-    class B5 b5
-
-    subgraph B6["Р‘Р»РѕРє 6. Р—Р°РІРµСЂС€РµРЅРёРµ"]
-        direction TB
-        B6Q31["(31) РџРѕР»СѓС‡РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹? вЂ” Р”Р° (e-mail) / РќРµС‚"]
-    end
-    class B6 b6
-
-    B2Q7 --> B3Q8
-    B3Q10 --> B4Q11
-    B4Q14 --> B5Int
-    B5Tol --> B6Q31
-    B6Q31 --> EndFinal[[РљРѕРЅРµС† РѕРїСЂРѕСЃР°]]
-
-    class EndEarly,EndFinal endNode
+    start --> B1
+    B1 -->|Р”Р°| B2
+    B1 -->|РќРµС‚| EndEarly
+    B2 --> B3 --> B4 --> B5 --> B6 --> EndFinal
       </div>
     </div>
   </main>
   <footer>
-    Р¤Р°Р№Р» СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё. РњР°СЃС€С‚Р°Р±РёСЂСѓР№С‚Рµ РєРѕР»РµСЃРёРєРѕРј РёР»Рё РјСѓР»СЊС‚РёС‚Р°С‡РµРј, РїРµСЂРµС‚Р°СЃРєРёРІР°Р№С‚Рµ Р»РµРІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё.
+    В© 2025 В«РљРёРЅРѕР¶СѓР№В». РЎС…РµРјР° СЃРѕР·РґР°РЅР° СЃ РїРѕРјРѕС‰СЊСЋ Mermaid + SVG Pan Zoom.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
@@ -140,35 +99,28 @@ flowchart TD
     mermaid.initialize({
       startOnLoad: false,
       theme: "neutral",
-      securityLevel: "loose",
-      flowchart: {
-        htmlLabels: true,
-        useMaxWidth: false
-      }
+      flowchart: { htmlLabels: true },
+      securityLevel: "loose"
     });
 
-    const renderMermaid = async () => {
-      const elements = document.querySelectorAll('.mermaid');
+    const init = async () => {
       await mermaid.run({ querySelector: '.mermaid' });
-      elements.forEach((container) => {
-        const svg = container.querySelector('svg');
-        if (svg) {
-          svgPanZoom(svg, {
-            panEnabled: true,
-            controlIconsEnabled: true,
-            fit: true,
-            center: true,
-            minZoom: 0.25,
-            maxZoom: 5,
-            zoomScaleSensitivity: 0.4,
-            dblClickZoomEnabled: true,
-            mouseWheelZoomEnabled: true
-          });
-        }
+      document.querySelectorAll('.mermaid svg').forEach((svg) => {
+        svgPanZoom(svg, {
+          panEnabled: true,
+          controlIconsEnabled: true,
+          fit: true,
+          center: true,
+          minZoom: 0.3,
+          maxZoom: 6,
+          zoomScaleSensitivity: 0.4,
+          mouseWheelZoomEnabled: true,
+          dblClickZoomEnabled: true
+        });
       });
     };
 
-    window.addEventListener('DOMContentLoaded', renderMermaid);
+    window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
