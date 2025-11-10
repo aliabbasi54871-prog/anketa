@@ -10,7 +10,6 @@ flowchart TD
     classDef b5 fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
     classDef b6 fill:#ECEFF1,stroke:#455A64,color:#263238,stroke-width:2px
     classDef endNode fill:#CFD8DC,stroke:#37474F,color:#263238,font-weight:bold
-
     start(Старт)
     B1[  Блок 1. Общие данные
   (1) Пол — мужской / женский
