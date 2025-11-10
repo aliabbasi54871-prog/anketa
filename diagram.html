@@ -1,7 +1,62 @@
-﻿# РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»
-
-```mermaid
-%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "Segoe UI"}}}%%
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #10131a;
+      color: #f1f5ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 20px 24px;
+      background: #151b24;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .canvas-wrapper {
+      position: relative;
+      flex: 1;
+      min-height: 500px;
+      border-radius: 16px;
+      background: #0b0f16;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+    .mermaid {
+      width: 100%;
+      height: 100%;
+    }
+    footer {
+      padding: 12px 24px;
+      background: #151b24;
+      font-size: 14px;
+      color: #9ea7b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>РЎС…РµРјР° РѕРїСЂРѕСЃР° В«РљРёРЅРѕР¶СѓР№В»</h1>
+    <p>РџРµСЂРµС‚Р°СЃРєРёРІР°Р№С‚Рµ СЃС…РµРјСѓ РјС‹С€СЊСЋ, РјР°СЃС€С‚Р°Р±РёСЂР№С‚Рµ РєРѕР»РµСЃРёРєРѕРј. РљРЅРѕРїРєРё СѓРїСЂР°РІР»РµРЅРёСЏ СЃРїСЂР°РІР° РїРѕРјРѕРіР°СЋС‚ С†РµРЅС‚СЂРёСЂРѕРІР°С‚СЊ Рё РїРѕРґРіРѕРЅСЏС‚СЊ РІРёРґ.</p>
+  </header>
+  <main>
+    <div class="canvas-wrapper">
+      <div class="mermaid">
+%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "Segoe UI", "primaryColor": "#1a2230"}, "flowchart": {"htmlLabels": true}, "securityLevel": "loose"}}%%
 flowchart TD
     classDef b1 fill:#E3F2FD,stroke:#1E88E5,color:#0D47A1,stroke-width:2px
     classDef b2 fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
@@ -71,4 +126,49 @@ flowchart TD
     B6Q31 --> EndFinal[[РљРѕРЅРµС† РѕРїСЂРѕСЃР°]]
 
     class EndEarly,EndFinal endNode
-```
+      </div>
+    </div>
+  </main>
+  <footer>
+    Р¤Р°Р№Р» СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё. РњР°СЃС€С‚Р°Р±РёСЂСѓР№С‚Рµ РєРѕР»РµСЃРёРєРѕРј РёР»Рё РјСѓР»СЊС‚РёС‚Р°С‡РµРј, РїРµСЂРµС‚Р°СЃРєРёРІР°Р№С‚Рµ Р»РµРІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "neutral",
+      securityLevel: "loose",
+      flowchart: {
+        htmlLabels: true,
+        useMaxWidth: false
+      }
+    });
+
+    const renderMermaid = async () => {
+      const elements = document.querySelectorAll('.mermaid');
+      await mermaid.run({ querySelector: '.mermaid' });
+      elements.forEach((container) => {
+        const svg = container.querySelector('svg');
+        if (svg) {
+          svgPanZoom(svg, {
+            panEnabled: true,
+            controlIconsEnabled: true,
+            fit: true,
+            center: true,
+            minZoom: 0.25,
+            maxZoom: 5,
+            zoomScaleSensitivity: 0.4,
+            dblClickZoomEnabled: true,
+            mouseWheelZoomEnabled: true
+          });
+        }
+      });
+    };
+
+    window.addEventListener('DOMContentLoaded', renderMermaid);
+  </script>
+</body>
+</html>
